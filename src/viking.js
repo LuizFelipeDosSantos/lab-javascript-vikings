@@ -96,18 +96,12 @@ class War {
 
     const resultOfTheAttack = victim.receiveDamage(attacker.attack());
 
-    //index of the dead victim
-    let indexDeadVictim;
-    victimArmy.forEach((victimSoldier, index) => {
-      if (victimSoldier.health <= 0) {
-        indexDeadVictim = index;
-      }
-    });
-
-    //if has a dead victim, delete from the array
-    if (indexDeadVictim >= 0) {
-      victimArmy.splice(indexDeadVictim-1,1);
+    //if the victim is dead, delete it from the array
+    if (victim.health <= 0) {
+      const indexDeadVictim = victimArmy.indexOf(victim);
+      victimArmy.splice(indexDeadVictim,1);
     }
+    
     return resultOfTheAttack;
   }
 
